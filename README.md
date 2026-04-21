@@ -36,3 +36,12 @@ Il seguente dizionario descrive la struttura e le finalità delle tabelle implem
 * **nome_servizio**: Nome del servizio finale (es. Portale Clienti, Gestione Pagamenti).
 * **descrizione_funzionale**: Dettaglio delle operazioni svolte dal servizio.
 * **id_asset_collegato (FK)**: Relazione tecnica con l'asset che supporta il servizio.
+## Profilo ACN
+
+Nel repository è presente un esempio di generazione del profilo di cybersecurity conforme alla metodologia ACN.
+
+- `03_seed_dati_test.sql`: dati simulati utilizzati per testare il sistema
+- `04_query_profilo_acn.sql`: vista SQL per la costruzione del profilo
+- `profilo_acn.md`: esempio di output finale del profilo
+
+Il profilo integra asset, servizi, fornitori e punti di contatto, con assegnazione di un livello di criticità derivato dai dati del database.
