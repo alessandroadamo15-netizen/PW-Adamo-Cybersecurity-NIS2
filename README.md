@@ -45,3 +45,14 @@ Nel repository è presente un esempio di generazione del profilo di cybersecurit
 - `profilo_acn.md`: esempio di output finale del profilo
 
 Il profilo integra asset, servizi, fornitori e punti di contatto, con assegnazione di un livello di criticità derivato dai dati del database.
+
+### Esempio di profilo generato
+
+| Asset | Servizio | Fornitore | Responsabile | Criticità fornitore | Livello profilo |
+|------|---------|----------|-------------|---------------------|----------------|
+| Server Web | Portale aziendale | Hosting Cloud Srl | Mario Rossi | Alta | Alta |
+| Database Clienti | Sistema CRM | CRM Provider Spa | Giulia Bianchi | Alta | Alta |
+| VPN Aziendale | Accesso remoto | Net Access Italia | Luca Verdi | Media | Media |
+
+Il profilo è ottenuto tramite la vista SQL `vista_profilo_acn`, che integra i dati relativi ad asset, servizi, fornitori e contatti, assegnando un livello di criticità sulla base delle informazioni disponibili.
+
