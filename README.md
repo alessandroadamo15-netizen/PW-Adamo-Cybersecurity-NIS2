@@ -1,8 +1,13 @@
 # PW-Adamo-Cybersecurity-NIS2
+
 Questo repository contiene l'implementazione tecnica a supporto del Project Work sulla cybersecurity e la conformità alla Direttiva (UE) 2022/2555 (NIS2). Il sistema è progettato per mappare gli asset critici, i servizi digitali e le dipendenze da fornitori terzi, facilitando il reporting verso l'ACN.
+
 # Progetto Gestione Asset Critici e Supply Chain - NIS2/ACN
+
 **Candidato:** Alessandro Adamo  
 **Repository:** PW-Adamo-Cybersecurity-NIS2
+
+---
 
 ## Data Dictionary (Dizionario dei Dati)
 
@@ -36,15 +41,23 @@ Il seguente dizionario descrive la struttura e le finalità delle tabelle implem
 * **nome_servizio**: Nome del servizio finale (es. Portale Clienti, Gestione Pagamenti).
 * **descrizione_funzionale**: Dettaglio delle operazioni svolte dal servizio.
 * **id_asset_collegato (FK)**: Relazione tecnica con l'asset che supporta il servizio.
+
+---
+
 ## Profilo ACN
 
 Nel repository è presente un esempio di generazione del profilo di cybersecurity conforme alla metodologia ACN.
 
-- `03_seed_dati_test.sql`: dati simulati utilizzati per testare il sistema
-- `04_query_profilo_acn.sql`: vista SQL per la costruzione del profilo
-- `profilo_acn.md`: esempio di output finale del profilo
+- `03_seed_dati_test.sql`: dati simulati utilizzati per testare il sistema  
+- `04_query_profilo_acn.sql`: vista SQL per la costruzione del profilo  
+- `profilo_acn.md`: esempio di output finale del profilo  
+- `05_valutazione_profilo_acn.md`: modello strutturato di valutazione del profilo di sicurezza  
 
 Il profilo integra asset, servizi, fornitori e punti di contatto, con assegnazione di un livello di criticità derivato dai dati del database.
+
+Caso di studio: organizzazione operante nel settore dei servizi digitali, caratterizzata da servizi esposti verso l’esterno e dipendenze da fornitori cloud.
+
+---
 
 ### Esempio di profilo generato
 
@@ -54,5 +67,9 @@ Il profilo integra asset, servizi, fornitori e punti di contatto, con assegnazio
 | Database Clienti | Sistema CRM | CRM Provider Spa | Giulia Bianchi | Alta | Alta |
 | VPN Aziendale | Accesso remoto | Net Access Italia | Luca Verdi | Media | Media |
 
-Il profilo è ottenuto tramite la vista SQL `vista_profilo_acn`, che integra i dati relativi ad asset, servizi, fornitori e contatti, assegnando un livello di criticità sulla base delle informazioni disponibili.
+Il profilo è ottenuto tramite la vista SQL `vista_profilo_acn`, che integra i dati relativi ad asset, servizi, fornitori e contatti.
+
+La determinazione del livello di criticità avviene considerando l'integrazione di più fattori: la tipologia dell’asset, l’impatto del servizio associato e il livello di rischio del fornitore. In questo modo il profilo non è una semplice aggregazione di dati, ma una rappresentazione sintetica della postura di sicurezza dell’organizzazione.
+
+Il risultato ottenuto rappresenta una porzione del profilo ACN, utile per supportare attività di analisi del rischio, reporting e gestione degli incidenti, in linea con i requisiti della Direttiva NIS2.
 
