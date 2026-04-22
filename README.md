@@ -52,7 +52,8 @@ Nel repository è presente un esempio di costruzione di una porzione del profilo
 - `03_seed_dati_test.sql`: dati simulati per testare il sistema  
 - `04_query_profilo_acn.sql`: vista SQL utilizzata per costruire il profilo  
 - `profilo_acn.md`: esempio di output finale  
-- `05_valutazione_profilo_acn.md`: modello di valutazione del profilo  
+- `05_valutazione_profilo_acn.md`: modello di valutazione del profilo
+- `06_query_supporto_profilo.sql`: query di supporto per l’analisi del profilo
 
 Il profilo è costruito a partire dai dati del database, mettendo in relazione asset, servizi, fornitori e punti di contatto, e assegnando un livello di criticità.
 
