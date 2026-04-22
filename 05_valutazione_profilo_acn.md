@@ -12,10 +12,14 @@ Il profilo è stato costruito considerando:
 
 ## Matrice di valutazione
 
-| Asset | Esposizione | Impatto | Dati sensibili | Rischio fornitore | Profilo |
-|------|------------|---------|---------------|------------------|--------|
+| Asset | Esposizione | Impatto servizio | Dati sensibili | Rischio fornitore | Profilo risultante |
+|---|---|---|---|---|---|
 | Server Web | Esterno | Alto | No | Alto | Alto |
 | Database Clienti | Interno | Alto | Sì | Alto | Alto |
 | VPN Aziendale | Interno | Medio | No | Medio | Medio |
+| Sistema Backup | Interno | Medio | Sì | Medio | Medio |
+| Mail Server | Esterno | Medio | No | Basso | Basso |
 
-Il livello di criticità finale è ottenuto combinando questi fattori, producendo una porzione del profilo ACN coerente con i dati del database.
+Il profilo risultante deriva dalla combinazione tra criticità tecnica dell’asset, impatto del servizio e rischio connesso al fornitore.
+
+Questa matrice rappresenta una porzione del profilo ACN costruita a partire dai dati del database e dalle query del repository.
