@@ -37,3 +37,35 @@ CREATE TABLE servizi_erogati (
     id_asset_collegato INT,
     FOREIGN KEY (id_asset_collegato) REFERENCES asset_critici(id_asset)
 );
+-- Tabella per gestire i profili ACN (Target vs Attuale)
+-- Implementazione livelli maturità CMMI e soglia copertura 0-1
+CREATE TABLE assessment_postura (
+    id_assessment SERIAL PRIMARY KEY,
+    id_asset INT REFERENCES asset_critici(id_asset),
+    codice_framework_acn VARCHAR(20), 
+    
+    -- Configurazione Profilo Target
+    maturita_target VARCHAR(20), -- Iniziale, Ripetibile, Definito, Gestito, Ottimizzato
+    priorita_intervento INT CHECK (priorita_intervento BETWEEN 1 AND 5),
+    
+    -- Rilevazione Profilo Attuale
+    maturita_attuale VARCHAR(20),
+    livello_copertura DECIMAL(3,2) CHECK (livello_copertura BETWEEN 0 AND 1),
+    
+    data_valutazione DATE DEFAULT CURRENT_DATE
+);
+
+-- Vista per Gap Analysis: verifica conformità su soglia 0.6
+CREATE OR REPLACE VIEW vista_gap_analisi_acn AS
+SELECT 
+    a.nome_asset,
+    ap.codice_framework_acn,
+    ap.maturita_target,
+    ap.maturita_attuale,
+    ap.livello_copertura,
+    CASE 
+        WHEN ap.livello_copertura < 0.6 THEN 'CRITICO: Sotto soglia 0.6'
+        ELSE 'CONFORME'
+    END AS stato_valutazione
+FROM assessment_postura ap
+JOIN asset_critici a ON ap.id_asset = a.id_asset;
