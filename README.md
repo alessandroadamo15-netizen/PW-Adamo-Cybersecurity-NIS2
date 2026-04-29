@@ -140,3 +140,7 @@ Il livello di criticità non è assegnato automaticamente, ma deriva da una valu
 Il modello proposto rappresenta una base dati utile per supportare attività di analisi del rischio e costruzione del profilo di cybersecurity.
 
 L’introduzione della gestione delle subcategorie e dei profili consente di avvicinare il modello alla logica del Framework ACN, rendendo possibile non solo la raccolta dei dati, ma anche il loro utilizzo all’interno del processo di assessment.
+### Update Assessment ACN
+Ho aggiornato lo schema per includere la gestione dei profili Target e Attuale. 
+Il sistema ora permette di mappare la maturità CMMI e calcolare la postura cyber 
+verificando la soglia di copertura 0.6 indicata dal prof a lezione.
