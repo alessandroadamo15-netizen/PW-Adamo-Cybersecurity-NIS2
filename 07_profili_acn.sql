@@ -76,3 +76,33 @@ SELECT
 FROM profilo_subcategorie ps
 JOIN subcategorie_framework s 
     ON ps.id_subcat = s.id_subcat;
+
+-- Collegamento logico tra sottocategorie del Framework e tabelle del database
+CREATE TABLE mappatura_subcategorie_database (
+    id_mappatura SERIAL PRIMARY KEY,
+    id_subcat INT REFERENCES subcategorie_framework(id_subcat),
+    tabella_riferimento VARCHAR(100),
+    campo_riferimento VARCHAR(100),
+    motivazione TEXT
+);
+
+INSERT INTO mappatura_subcategorie_database (
+    id_subcat,
+    tabella_riferimento,
+    campo_riferimento,
+    motivazione
+) VALUES
+(1, 'anagrafica_contatti', 'ruolo_aziendale', 'La sottocategoria GV.RR02 riguarda ruoli e responsabilità, quindi viene collegata ai referenti interni censiti nel database.'),
+(2, 'asset_critici', 'nome_asset', 'La sottocategoria ID.AM01 riguarda l’inventario degli asset, quindi viene collegata alla tabella degli asset critici.'),
+(3, 'asset_critici / servizi_erogati / fornitori_terze_parti', 'livello_criticita', 'La sottocategoria ID.RA01 riguarda la valutazione del rischio, quindi viene collegata alle informazioni su asset, servizi e fornitori.');
+
+-- Vista per mostrare come le sottocategorie del Framework sono collegate al database
+CREATE VIEW vista_mappatura_subcategorie AS
+SELECT
+    s.codice,
+    s.descrizione,
+    m.tabella_riferimento,
+    m.campo_riferimento,
+    m.motivazione
+FROM mappatura_subcategorie_database m
+JOIN subcategorie_framework s ON m.id_subcat = s.id_subcat;
